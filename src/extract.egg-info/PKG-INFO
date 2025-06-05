@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: extract
+Version: 0.1.0
+Summary: Paper implementation of ExTracT: Explainable Trajectory Corrections
+Author-email: Anurag Maurya <akmaurya7379@gmail.com>
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"

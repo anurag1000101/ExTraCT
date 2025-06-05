@@ -1,0 +1,5 @@
+name: extract
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+prefix: /home/anurag/miniconda3/envs/extract
