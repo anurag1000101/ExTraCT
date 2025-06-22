@@ -52,7 +52,7 @@ def get_extract_trajectory(file_path, instruction=None):
     # select the deformation function
     modified_trajectory=np.array(deformation_operator.apply_deformation(FT,trajectory, obj_position)).tolist()
     # import ipdb; ipdb.set_trace()
-    return trajectory, modified_trajectory, instruction, objects
+    return trajectory.tolist(), modified_trajectory, instruction, objects
 
 
 if __name__=="__main__":
