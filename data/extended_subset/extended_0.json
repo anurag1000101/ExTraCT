@@ -241,7 +241,6 @@
             0.0
         ]
     ],
-    "instruction": "Go right by 0.3",
     "objects": [
         {
             "name": "plectrum",
@@ -262,5 +261,6 @@
             "z": -0.06160196610921059
         }
     ],
-    "constraints": "The Environment imposes following constraints: \n The operational envelope is defined as a cuboid. The x-axis range is -0.5 to 0.5, the y-axis range is -0.5 to 0.5, and the z-axis range is -0.5 to 0.5. Additionally all the waypoints should be at least at a distance of 0.01 from all of the object boundaries"
+    "instruction": "Go right by 0.3",
+    "constraints": ""
 }

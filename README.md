@@ -40,6 +40,9 @@ python scripts/collect_results_extract.py
 ```bash
 python -m extract.extract --trajectory_path data/latte_0.json
 ```
+
+### Important: change r and w for a good combination of changes in the extract. If the oject is outside of deformation radius no change will occur.
+
 ### Run with a Custom Instruction
 ```bash
 python -m extract.extract --trajectory_path data/latte_0.json --instruction "<your instruction>"

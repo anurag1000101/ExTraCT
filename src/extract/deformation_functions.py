@@ -2,10 +2,11 @@ import numpy as np
 
 
 class DeformationFunctions:
-    def __init__(self,w=1.0):
+    def __init__(self,w=0.1):
         self.w = w # weight for the strength of deformation functions
 
     def apply_deformation(self, feature_template, trajectory, pos_obj):
+        print(feature_template)
         if feature_template == "obj_distance_decrease":
             if pos_obj is not None: 
                 return self.obj_distance_decrease(trajectory, pos_obj)
@@ -50,11 +51,35 @@ class DeformationFunctions:
 
         Returns:
             list of list: Deformed trajectory, same structure as trajectory
+
+            
+        From Extract: 
+        For scene-specific features, i.e. object distance features,
+        the force exerted is dependent on the object position opos
+        and a radius of deformation r. In our experiments, we set
+        r = 0.3, which was determined empirically. We note that r
+        can be set adaptively based on environmental constraints and
+        human preferences but this will be part of our future work.
+        For waypoints within the radius of deformation r from the
+        object position opos, a force is applied on the waypoints in
+        the direction of the distance vector between the waypoint and
+        the object. The force is 0 for other waypoints.
+
+        For scene-independent features, a force is exerted on all
+        waypoints of the trajectory, where the direction of the force is
+        dependent on the feature.
+        The trajectory is deformed based on the force calculated on
+        each waypoint : δ = ξ0 + wF, where the weight w changes
+        the magnitude of the deformation. We empirically determined
+        the value of w to be a constant of 1.0 in our experiments
+
+
         """
         opos = np.array(pos_obj)
 
         new_traj = []
         for waypoint in trajectory:
+            
             pos = np.array(waypoint[:3])
             vel = waypoint[3]
 
@@ -62,7 +87,7 @@ class DeformationFunctions:
             dist_vec = opos - pos
             dist = np.linalg.norm(dist_vec)
 
-            if dist < r and dist > 1e-6:  # Within radius and avoid division by zero
+            if dist < r and dist > 1e-6 and dist>0.01 :  # Within radius and avoid division by zero, don't come too near to the objects
                 # Apply force proportional to distance (pull toward object)
                 direction = dist_vec / dist
                 force_magnitude = (r - dist) / r  # Linearly decays to 0 at r
@@ -98,7 +123,7 @@ class DeformationFunctions:
             dist_vec = pos - opos  # Direction: away from object
             dist = np.linalg.norm(dist_vec)
 
-            if dist < r and dist > 1e-6:  # Within radius and avoid division by zero
+            if dist < r and dist > 1e-6  and dist>0.01:  # Within radius and avoid division by zero, avoid colliding with the object
                 # Apply force proportional to distance (push away from object)
                 direction = dist_vec / dist
                 force_magnitude = (r - dist) / r  # Linearly decays to 0 at r

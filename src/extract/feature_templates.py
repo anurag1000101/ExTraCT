@@ -29,21 +29,21 @@ FEATURE_TEMPLATES = {
         "Top",
         "Go to the top",
     ],
-    "y_cart_decrease": [
+    "x_cart_decrease": [
         "Stay on the left",
         "Go to the left",
         "Move left",
         "Move more towards the left",
         "Left",
     ],
-    "y_cart_increase": [
+    "x_cart_increase": [
         "Stay on the right",
         "Go to the right",
         "Move right",
         "Move more towards the right",
         "Right",
     ],
-    "x_cart_decrease": [
+    "y_cart_decrease": [
         "Stay at the back",
         "Go to the back",
         "Move back",
@@ -51,7 +51,7 @@ FEATURE_TEMPLATES = {
         "Move backward",
         "Go behind",
     ],
-    "x_cart_increase": [
+    "y_cart_increase": [
         "Stay at the front",
         "Go to the front",
         "Move front",

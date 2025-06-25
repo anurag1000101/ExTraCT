@@ -40,7 +40,7 @@ def get_trajectory(data, sample=True, num_points=100, dict_format=True):
     return trajectory
 
 
-def detect_objects(data, DEFAULT_DIMENSION=0.1):
+def detect_objects(data, DEFAULT_DIMENSION=0.01):
     objs = copy.deepcopy(data["objects"])
     for item in objs:
         item["name"] = item["name"].lower()
@@ -93,7 +93,6 @@ def compare_trajectory(
         fontsize=18,
         ha="right",
         color="blue",
-        font="times new roman",
     )
 
     ax1.scatter(
@@ -107,7 +106,7 @@ def compare_trajectory(
         fontsize=18,
         ha="right",
         color="blue",
-        font="times new roman",
+
     )
 
     ax1.scatter(
@@ -121,7 +120,6 @@ def compare_trajectory(
         fontsize=18,
         ha="right",
         color="red",
-        font="times new roman",
     )
 
     ax1.scatter(
@@ -135,7 +133,6 @@ def compare_trajectory(
         fontsize=18,
         ha="right",
         color="red",
-        font="times new roman",
     )
 
     # Plot the objects present in the environment
@@ -222,7 +219,6 @@ def compare_trajectory(
                 ha="left",
                 va="top",
                 fontsize=18,
-                font="times new roman",
             )
 
     # Set labels for the 3D plot
